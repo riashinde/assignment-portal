@@ -1,0 +1,747 @@
+/*
+  Shared look for every page.
+  One accent color (violet) so the demo matches the split login screen.
+  The header is dark. Pages are drawn in the panel below it.
+*/
+
+:root {
+  --bg: #f3f1f8;
+  --surface: #ffffff;
+  --ink: #1c2430;
+  --muted: #5c6478;
+  --line: #e4e0ee;
+  --accent: #7c5cfc;
+  --header: #16161c;
+  --header-text: #f6f3ee;
+  --shadow: 0 12px 32px rgba(28, 36, 48, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 70% 45% at 0% 0%, rgba(124, 92, 252, 0.1), transparent 55%),
+    var(--bg);
+}
+
+.wrap {
+  width: min(960px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+/* Puts the white card in the middle of the space under the header. */
+.stage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: safe center;
+  width: 100%;
+  padding: 1.5rem 0 1rem;
+}
+
+.site-header {
+  background: var(--header);
+  color: var(--header-text);
+  border-bottom: 4px solid var(--accent);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 1rem 0 0.85rem;
+}
+
+.header-button {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--header-text);
+  border: 1px solid rgba(246, 243, 238, 0.4);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.header-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c4b6f5;
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.tagline {
+  margin: 0.45rem 0 0;
+  max-width: 36rem;
+  color: #d5d0e6;
+}
+
+/*
+  The page panel sizes to its content.
+  It does not stretch to the bottom of the screen, so a short page
+  does not end in a large empty box. The footer stays at the bottom.
+*/
+#app {
+  flex: 0 1 auto;
+  margin: 0;
+  padding: 1.25rem 1.5rem 1.35rem;
+  background: var(--surface);
+  border: 1px solid rgba(227, 213, 196, 0.9);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+h2 {
+  margin: 0 0 0.35rem;
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.lead {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.auth-panel,
+.home-panel {
+  max-width: 28rem;
+}
+
+/* Sign-in sits in the middle of the panel so the wide card does not look half empty. */
+#app.is-auth .auth-panel {
+  margin-inline: auto;
+}
+
+.field {
+  margin-bottom: 0.8rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 650;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ddd8ea;
+  border-radius: 8px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  box-shadow: inset 0 1px 2px rgba(28, 36, 48, 0.04);
+}
+
+.field textarea {
+  min-height: 3.25rem;
+  resize: vertical;
+}
+
+.field select {
+  width: 100%;
+  max-width: 24rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ddd8ea;
+  border-radius: 8px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+}
+
+.create-form {
+  max-width: 36rem;
+}
+
+.create-form .upload-message {
+  margin: 0.15rem 0 0.85rem;
+}
+
+.hint {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.primary {
+  margin-top: 0.35rem;
+  padding: 0.7rem 1.2rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(10, 50, 40, 0.25);
+}
+
+.primary:hover {
+  background: #6846e6;
+}
+
+.primary:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible,
+.field select:focus-visible,
+.primary:focus-visible,
+.upload-row input[type="file"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.header-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Shown when sign-in fails. Hidden until there is a message. */
+.form-error {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #f0c2bc;
+  border-radius: 8px;
+  background: #fdecea;
+  color: #8c2f2f;
+}
+
+.form-error[hidden] {
+  display: none;
+}
+
+.practice-accounts {
+  margin-top: 1.35rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f7f1e8;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.practice-accounts p {
+  margin: 0.15rem 0;
+}
+
+#header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.header-user {
+  color: #d5d0e6;
+  font-size: 0.92rem;
+}
+
+.role-pill {
+  display: inline-block;
+  margin: 0;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  background: #efeaff;
+  color: #5b3fd4;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* One row of pages. Only the signed-in role's links are added. */
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-button {
+  padding: 0.45rem 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  color: var(--ink);
+  background: #f3efe6;
+}
+
+.nav-button.is-active {
+  background: #efeaff;
+  color: #5b3fd4;
+}
+
+.nav-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.assignment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.assignment-card {
+  padding: 1rem 1.05rem 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(28, 36, 48, 0.04);
+}
+
+.assignment-card.is-closed {
+  border-color: #ead4ce;
+  border-left-color: #b85a4a;
+  background: #fff8f6;
+}
+
+.assignment-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.35rem 0.75rem;
+}
+
+.assignment-card h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  line-height: 1.3;
+}
+
+.assignment-desc {
+  margin: 0.45rem 0 0.4rem;
+}
+
+.deadline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.status-pill {
+  flex-shrink: 0;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-pill.is-open {
+  background: #efeaff;
+  color: #5b3fd4;
+}
+
+.status-pill.is-late {
+  background: #fdecea;
+  color: #8c2f2f;
+}
+
+.upload-form {
+  margin-top: 0.85rem;
+}
+
+.upload-form .primary {
+  margin-top: 0;
+}
+
+.upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.upload-row input[type="file"] {
+  max-width: 100%;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid #ddd8ea;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+.upload-message {
+  margin: 0.65rem 0 0;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+}
+
+.upload-message[hidden] {
+  display: none;
+}
+
+.upload-message.is-error {
+  border: 1px solid #f0c2bc;
+  background: #fdecea;
+  color: #8c2f2f;
+}
+
+.upload-message.is-ok {
+  border: 1px solid #d4c8ff;
+  background: #efeaff;
+  color: #5b3fd4;
+}
+
+.empty-note {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border: 1px dashed #d2c3b0;
+  border-radius: 12px;
+  background: #f7f5fb;
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(28, 36, 48, 0.04);
+}
+
+.data-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  background: #f6f4fb;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  padding: 0.75rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Stack the table so a phone shows every column, not a cut-off row. */
+  .data-table {
+    min-width: 0;
+  }
+
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table tr,
+  .data-table td {
+    display: block;
+  }
+
+  .data-table tr {
+    padding: 0.75rem 0.85rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .data-table td {
+    padding: 0.2rem 0;
+    border-bottom: 0;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.1rem;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .data-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+}
+
+.site-footer {
+  margin-top: 0;
+  padding: 0.85rem 0 1.15rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/*
+  Login screen, modeled on a split layout:
+  dark form on the left, violet welcome card on the right.
+  The site header is hidden until someone is signed in.
+*/
+body.is-login {
+  background: #121214;
+}
+
+body.is-login .site-header,
+body.is-login .site-footer {
+  display: none;
+}
+
+body.is-login .stage {
+  display: block;
+  padding: 0;
+}
+
+body.is-login #app {
+  width: 100%;
+  max-width: none;
+  flex: 1;
+  margin: 0;
+  padding: 1.25rem;
+  min-height: 100vh;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.login-split {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 0.5rem;
+  min-height: calc(100vh - 2.5rem);
+}
+
+.login-form-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 26rem;
+  margin-inline: auto;
+  padding: 2rem 1.5rem;
+  color: #fff;
+}
+
+.login-form-side h2 {
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 2.4rem;
+  color: #fff;
+}
+
+.login-form-side .lead {
+  color: #b7b7c2;
+}
+
+.login-form-side .field label {
+  color: #c8c8d2;
+  font-weight: 600;
+}
+
+.login-form-side .field input {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
+  box-shadow: none;
+  color: #fff;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.login-form-side .field input:focus-visible {
+  outline: none;
+  border-bottom-color: #fff;
+}
+
+.login-form-side .primary {
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: 999px;
+  background: #8d6bff;
+  box-shadow: none;
+}
+
+.login-form-side .primary:hover {
+  background: #7c5cfc;
+}
+
+.login-form-side .text-button {
+  margin-top: 1rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.login-form-side .role-choice {
+  margin: 0.2rem 0 0.9rem;
+  padding: 0;
+  border: 0;
+}
+
+.login-form-side .role-choice legend {
+  margin-bottom: 0.45rem;
+  color: #c8c8d2;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.login-form-side .role-options {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.login-form-side .role-options label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-form-side .role-options input {
+  accent-color: #8d6bff;
+}
+
+.login-form-side .practice-accounts {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #c8c8d2;
+}
+
+.login-form-side .practice-accounts strong {
+  color: #fff;
+}
+
+.login-welcome {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 3rem 2rem;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.16), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.12), transparent 32%),
+    #7c5cfc;
+  color: #fff;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+}
+
+.login-welcome h2 {
+  margin: 0;
+  max-width: 10ch;
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 750;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.login-welcome p {
+  max-width: 22rem;
+  margin: 0.9rem 0 0;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.welcome-art {
+  width: min(100%, 420px);
+  margin-top: 1.5rem;
+  align-self: flex-end;
+}
+
+@media (max-width: 800px) {
+  body.is-login #app {
+    padding: 0.75rem;
+  }
+
+  .login-split {
+    grid-template-columns: 1fr;
+  }
+
+  .login-welcome {
+    min-height: 240px;
+    padding: 1.5rem;
+    order: -1;
+  }
+
+  .login-welcome h2 {
+    max-width: none;
+    font-size: 2rem;
+  }
+
+  .welcome-art {
+    width: 220px;
+    margin-top: 0.5rem;
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assignment Portal</title>
+  <!-- All styling lives in one file so the pages stay easy to explain. -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Site title. Log out is added on the right after someone signs in. -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="header-titles">
+        <p class="eyebrow">Cloud Computing PBL</p>
+        <h1>Assignment Portal</h1>
+        <p class="tagline">Turn in files before the deadline. Teachers see who submitted.</p>
+      </div>
+      <div id="header-actions"></div>
+    </div>
+  </header>
+
+  <!-- Centers the page card. Login ignores this and uses the full screen. -->
+  <div class="stage">
+    <main id="app" class="wrap" aria-label="Content area"></main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>PDF, DOCX, or ZIP. Maximum size 10 MB.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
